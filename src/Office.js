@@ -1,5 +1,6 @@
 class MeetingRoom {
-  constructor() {
+  constructor(name) {
+    this.name = name
     this.availability = true
   }
   available() {
@@ -12,6 +13,9 @@ class MeetingRoom {
       this.availability = false;
     }
   }
+  getName() {
+    return this.name;
+  }
   leave() {
     this.availability = true;
   }
@@ -19,17 +23,17 @@ class MeetingRoom {
 
 class Office {
   constructor() {
-    this.meetingRoomList = []
-  }
+    this.meetingRoomList = [ ];
+      for(var i = 1; i < 5; i++) {
+        this.meetingRoomList.push(new MeetingRoom(`Meeting Room ${i}`));
+        }
+     }
   addMeetingRoom(room) {
-    this.meetingRoomList.push(room)
+    this.meetingRoomList.push(room);
   }
   availableRoomList() {
-    // this.meetingRoomList.forEach(function(room) => {
-    //console.log(room) ;
-    //})
     let availableRoom = this.meetingRoomList.filter(room => 
     room.availability === true);
-    console.log(availableRoom);
+    return availableRoom;
   }
 }
